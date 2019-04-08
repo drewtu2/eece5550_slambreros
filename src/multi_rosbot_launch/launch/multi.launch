@@ -31,7 +31,8 @@
         args="-d $(find multi_rosbot_launch)/rviz/rviz_god_mode.rviz" 
         required="true" 
         output="screen"/>
-	
+    
+    <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
 
 </launch>
 

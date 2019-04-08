@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- These arguments will be passed in by the calling launch file -->
+    <arg name="robot_name"/>
+    <arg name="init_pose"/>
+
+    <!-- Setup the joint state controller -->
+    <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+    <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller" />
+
+
+    <node name="rosbot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+    <!-- Start gmapping -->
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping">
+        <param name="base_frame"    value="$(arg robot_name)/base_link"/>
+        <param name="odom_frame"    value="$(arg robot_name)/odom" />
+        <param name="map"           value="$(arg robot_name)/map" />
+        <param name="delta" value="0.1" />
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="baselink" args="0 0 0 0 0 0 map $(arg robot_name)/map 100"/>
+
+</launch>

@@ -1,0 +1,37 @@
+<launch>
+
+    <arg name="use_gazebo" default="true"/>
+
+
+	<!-- Setup World Gazebo -->
+    <include file="$(find rosbot_gazebo)/launch/maze_world.launch"/>
+    
+    <!-- Load the robot description parameters--> 
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>
+    
+    <group ns="rosbot1">
+        <param name="tf_prefix" value="rosbot1"></param>
+        <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
+            <arg name="robot_name" value="rosbot1"/>
+            <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
+        </include>
+    </group>
+
+
+    <group ns="rosbot2">
+        <param name="tf_prefix" value="rosbot2"></param>
+        <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
+            <arg name="robot_name" value="rosbot2"/>
+            <arg name="init_pose" value="-x -2.0 -y -2.0 -z 0"/>
+        </include>
+    </group>
+    
+	<!-- Stuff we need either way-->
+    <node name="rviz_overview" pkg="rviz" type="rviz" 
+        args="-d $(find multi_rosbot_launch)/rviz/rviz_god_mode.rviz" 
+        required="true" 
+        output="screen"/>
+	
+
+</launch>
+

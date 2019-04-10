@@ -10,6 +10,7 @@ Panels:
         - /Rosbot 21
         - /Map 21
         - /Map 11
+        - /Merged1
       Splitter Ratio: 0.5
     Tree Height: 895
   - Class: rviz/Selection
@@ -322,6 +323,16 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Merged
+      Topic: /merged_map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48

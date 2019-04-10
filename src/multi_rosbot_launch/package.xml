@@ -58,6 +58,7 @@
   <exec_depend>rosbot_description</exec_depend>
   <exec_depend>rosbot_gazebo</exec_depend>
   <exec_depend>rosbot_navigation</exec_depend>
+  <exec_depend>multirobot_map_merge</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

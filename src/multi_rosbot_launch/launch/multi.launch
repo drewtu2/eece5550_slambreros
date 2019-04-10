@@ -11,6 +11,11 @@
     
     <group ns="rosbot1">
         <param name="tf_prefix" value="rosbot1"></param>
+        <param name="map_merge/init_pose_x" value="0"></param>
+        <param name="map_merge/init_pose_y" value="0"></param>
+        <param name="map_merge/init_pose_z" value="0"></param>
+        <param name="map_merge/init_pose_yaw" value="0"></param>
+
         <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
             <arg name="robot_name" value="rosbot1"/>
             <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
@@ -20,6 +25,11 @@
 
     <group ns="rosbot2">
         <param name="tf_prefix" value="rosbot2"></param>
+        <param name="map_merge/init_pose_x" value="-2"></param>
+        <param name="map_merge/init_pose_y" value="-2"></param>
+        <param name="map_merge/init_pose_z" value="0"></param>
+        <param name="map_merge/init_pose_yaw" value="0"></param>
+
         <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
             <arg name="robot_name" value="rosbot2"/>
             <arg name="init_pose" value="-x -2.0 -y -2.0 -z 0"/>

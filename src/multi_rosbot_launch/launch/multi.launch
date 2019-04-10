@@ -33,6 +33,7 @@
         output="screen"/>
     
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
-
+    
+    <include file="$(find multi_rosbot_launch)/launch/merge_maps.launch"> </include>
 </launch>
 

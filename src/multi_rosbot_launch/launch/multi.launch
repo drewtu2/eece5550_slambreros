@@ -35,5 +35,6 @@
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     
     <include file="$(find multi_rosbot_launch)/launch/merge_maps.launch"> </include>
+    <node pkg="tf" type="static_transform_publisher" name="maplink" args="-100 -100 0 0 0 0 map world 100"/>
 </launch>
 

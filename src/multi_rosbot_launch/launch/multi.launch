@@ -20,6 +20,18 @@
             <arg name="robot_name" value="rosbot1"/>
             <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
         </include>
+
+        <node name="movebase1" pkg="move_base" type="move_base" required="true" output="screen" >
+            <!--param name="global_costmap/origin_x" value="-5"></param-->
+            <!--param name="global_costmap/origin_y" value="-5"></param-->
+            <!--param name="global_costmap/width" value="100"></param-->
+            <!--param name="global_costmap/height" value="100"></param-->
+        </node>
+        <node name="Explore1" pkg="explore_lite" type="explore" required="true" output="screen" >
+            <param name="robot_base_frame" value="base_link" />
+            <param name="costmap_topic" value="/merged_map" />
+            <param name="costmap_updates_topic" value="/merged_map_updates" />
+        </node>
     </group>
 
 
@@ -34,13 +46,34 @@
             <arg name="robot_name" value="rosbot2"/>
             <arg name="init_pose" value="-x -2.0 -y -2.0 -z 0"/>
         </include>
+
+        <node name="movebase2" pkg="move_base" type="move_base" required="true" output="screen" >
+            <!--param name="global_costmap/origin_x" value="-5"></param-->
+            <!--param name="global_costmap/origin_y" value="-5"></param-->
+            <!--param name="global_costmap/width" value="100"></param-->
+            <!--param name="global_costmap/height" value="100"></param-->
+
+        </node>
+
+        <node name="Explore2" pkg="explore_lite" type="explore" required="true" output="screen" >
+            <!--param name="robot_base_frame" value="base_link" /-->
+            <!--param name="costmap_topic" value="/merged_map" /-->
+            <param name="robot_base_frame" value="base_link" />
+            <param name="costmap_topic" value="/merged_map" />
+            <param name="costmap_updates_topic" value="/merged_map_updates" />
+        </node>
     </group>
-    
+
+    <remap from="/merged_map" to="/rosbot1/movebase1/global_costmap/costmap" />
+    <remap from="/merged_map_updates" to="/rosbot1/movebase1/global_costmap/costmap_updates" />
+    <remap from="/merged_map" to="/rosbot2/movebase2/global_costmap/costmap" />
+    <remap from="/merged_map_updates" to="/rosbot2/movebase2/global_costmap/costmap_updates" />
+
 	<!-- Stuff we need either way-->
     <node name="rviz_overview" pkg="rviz" type="rviz" 
         args="-d $(find multi_rosbot_launch)/rviz/rviz_god_mode.rviz" 
         required="true" 
-        output="screen"/>
+        output="log"/>
     
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     

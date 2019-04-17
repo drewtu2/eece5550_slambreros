@@ -8,5 +8,5 @@ global_costmap:
   origin_y: -7.5
   static_map: true
   rolling_window: true
-  inflation_radius: 0.25
+  inflation_radius: .15
   resolution: 0.1

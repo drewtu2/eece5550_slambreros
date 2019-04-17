@@ -21,11 +21,11 @@
             <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
         </include>`
 
-        <node name="movebase1" pkg="move_base" type="move_base" required="true" output="screen" >
+        <node name="movebase" pkg="move_base" type="move_base" required="true" output="screen" >
         <!--
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        -->
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        -->
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />

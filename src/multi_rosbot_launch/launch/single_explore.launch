@@ -40,7 +40,7 @@
         -->
     </group>
 
-    <remap from="/move_base_simple/goal" to="/rosbot1/move_base_simple_goal"/>
+    <remap from="/move_base_simple/goal" to="/rosbot1/move_base_simple/goal"/>
 
 	<!-- Stuff we need either way-->
     <node name="rviz_overview" pkg="rviz" type="rviz" 

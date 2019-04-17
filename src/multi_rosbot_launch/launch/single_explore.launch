@@ -22,12 +22,15 @@
         </include>`
 
         <node name="movebase1" pkg="move_base" type="move_base" required="true" output="screen" >
+        <!--
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        -->
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
         </node>
+
         <!--
         <node name="Explore1" pkg="explore_lite" type="explore" required="true" output="screen" >
             <param name="robot_base_frame" value="base_link" />
@@ -36,6 +39,8 @@
         </node>
         -->
     </group>
+
+    <remap from="/move_base_simple/goal" to="/rosbot1/move_base_simple_goal"/>
 
 	<!-- Stuff we need either way-->
     <node name="rviz_overview" pkg="rviz" type="rviz" 

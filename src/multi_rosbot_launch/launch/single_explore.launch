@@ -26,18 +26,23 @@
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
         -->
+            <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+            <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
+            <param name="publish_cost_grid_pc" value="true" />
         </node>
 
-        <!--
+        <!-->
         <node name="Explore1" pkg="explore_lite" type="explore" required="true" output="screen" >
             <param name="robot_base_frame" value="base_link" />
             <param name="costmap_topic" value="/merged_map" />
             <param name="costmap_updates_topic" value="/merged_map_updates" />
+            <param name="track_unknown_space" value="true" />
         </node>
-        -->
+        <-->
+
     </group>
 
     <remap from="/move_base_simple/goal" to="/rosbot1/move_base_simple/goal"/>

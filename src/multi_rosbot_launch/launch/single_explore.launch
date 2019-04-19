@@ -26,6 +26,7 @@
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
         -->
+            <param name="controller_frequency" value="10.0"/>
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />

@@ -18,6 +18,6 @@
   </include>
   
   <!-- Start the node that handles the map exploration percentage -->
-  <node name="challenge_server" pkg="labrob_worlds" type="challenge_server.py" output="screen" />
+  <!--<node name="challenge_server" pkg="labrob_worlds" type="challenge_server.py" output="screen" />-->
 
 </launch>

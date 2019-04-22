@@ -40,6 +40,9 @@
             <param name="costmap_topic" value="/merged_map" />
             <param name="costmap_updates_topic" value="/merged_map_updates" />
             <param name="track_unknown_space" value="true" />
+            <param name="min_frontier_size" value="0.01" />
+            <param name="visualize" value="true" />
+            <param name="progress_timeout" value="60.0" />
         </node>
 
         <node name="relay_goal" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">

@@ -37,10 +37,10 @@
 
         <node name="Explore1" pkg="explore_lite" type="explore" required="true" output="screen" >
             <param name="robot_base_frame" value="base_link" />
-            <param name="costmap_topic" value="map" />
-            <param name="costmap_updates_topic" value="/map_updates" />
+            <param name="costmap_topic" value="/merged_map" />
+            <param name="costmap_updates_topic" value="/merged_map_updates" />
             <param name="track_unknown_space" value="true" />
-            <param name="min_frontier_size" value="0.2"/>
+            <param name="min_frontier_size" value="0.1"/>
         </node>
 
         <node name="relay_goal" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
@@ -78,10 +78,10 @@
 
         <node name="Explore2" pkg="explore_lite" type="explore" required="true" output="screen" >
             <param name="robot_base_frame" value="base_link" />
-            <param name="costmap_topic" value="map" />
-            <param name="costmap_updates_topic" value="map_updates" />
+            <param name="costmap_topic" value="/merged_map" />
+            <param name="costmap_updates_topic" value="/merged_map_updates" />
             <param name="track_unknown_space" value="true" />
-            <param name="min_frontier_size" value="0.2" />
+            <param name="min_frontier_size" value="0.1" />
         </node>
 
         <node name="relay_goal2" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">

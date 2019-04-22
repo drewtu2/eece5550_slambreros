@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /Robot2Goal1
+        - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 776
   - Class: rviz/Selection
@@ -485,6 +486,14 @@ Visualization Manager:
       Topic: /rosbot2/movebase2/NavfnROS/plan
       Unreliable: false
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /rosbot1/Explore1/frontiers
+      Name: MarkerArray
+      Namespaces:
+        frontiers: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -510,7 +519,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 21.7505074
+      Distance: 14.822361
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1

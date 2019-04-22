@@ -1,10 +1,11 @@
+<?xml version="1.0"?>
 <launch>
 
     <arg name="use_gazebo" default="true"/>
 
 
 	<!-- Setup World Gazebo -->
-    <include file="$(find rosbot_gazebo)/launch/maze_world.launch"/>
+    <include file="$(find multi_rosbot_launch)/launch/challenge_maze.launch"/>
     
     <!-- Load the robot description parameters--> 
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>

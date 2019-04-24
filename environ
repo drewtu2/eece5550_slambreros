@@ -1,0 +1,8 @@
+# environment variables for this project
+export MASTER_JAGUAR=http://10.101.84.77:11311  # Jaguar IP and Port
+
+export ROS_MASTER_URI=$MASTER_JAGUAR            # Jaguar as MASTER (got that DNS)
+export ROS_IPV6=off                             # use IPV4
+
+# needs to be set...
+export ROS_IP=$(hostname -i)                    # IP address of current machine

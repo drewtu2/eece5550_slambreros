@@ -6,8 +6,6 @@
     <include file="$(find astra_launch)/launch/astra.launch"></include>
     <include file="$(find rplidar_ros)/launch/rplidar.launch"></include>
     
-    <node pkg="tf" type="static_transform_publisher" name="ROSbot2_laser" args="0 0 0 3.14 0 0 base_link laser 10" />
-    <node pkg="tf" type="static_transform_publisher" name="map_to_baselink" args="0 0 0 0 0 0 /map /base_link 10" />
     <node pkg="tf" type="static_transform_publisher" name="maplink" args="-100 -100 0 0 0 0 map world 100"/>
     
     <node pkg="move_base" type="move_base" name="move_base" output="screen">
@@ -20,5 +18,9 @@
         <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
     </node>
 </group>
+
+<node pkg="tf" type="static_transform_publisher" name="map_to_baselink2" args="0 0 0 0 0 0 /rosbot2/map /rosbot2/base_link 10" />
+<node pkg="tf" type="static_transform_publisher" name="ROSbot2laser2" args="0 0 0 3.14 0 0 /rosbot2/base_link /rosbot2/laser 10" />
+<node pkg="tf" type="static_transform_publisher" name="map2rosbot2map" args="0 0 0 0 0 0 map /rosbot2/map 100"/>
 
 </launch>

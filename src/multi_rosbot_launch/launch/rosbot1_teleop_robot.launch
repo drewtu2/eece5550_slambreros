@@ -4,6 +4,7 @@
 <node pkg="multi_rosbot_launch" type="rosbot1_serial_bridge.sh" name="bridge" output="screen"/>
 <group ns="rosbot1">
     <param name="tf_prefix" value="rosbot1" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>
 
     <include file="$(find rplidar_ros)/launch/rplidar.launch"></include>
     

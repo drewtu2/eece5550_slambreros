@@ -19,6 +19,15 @@
         <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
         <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
     </node>
+
+    <!-- Start gmapping -->
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping">
+        <param name="base_frame"    value="rosbot1/base_link"/>
+        <param name="odom_frame"    value="rosbot1/odom" />
+        <param name="map"           value="rosbot1/map" />
+        <param name="delta" value="0.1" />
+    </node>
+    
 </group>
 
 <node pkg="tf" type="static_transform_publisher" name="map_to_baselink1" args="0 0 0 0 0 0 /rosbot1/map /rosbot1/base_link 10" />

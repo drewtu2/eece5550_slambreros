@@ -74,6 +74,17 @@ To Save a completed merged map:
     source devel/setup.sh
     rosrun map_server map_saver map:=/merged_map -f <output_filename>
 ```
+# With Great Power Comes Great Responsibility:
+## Andrew
+Andrew was the de facto leader of the group. He had the most experience with ROS and was able to guide every other member when they ran into any issues. Andrew was responsible for integrating the multi-map merge package into our system in both simulation and hardware. Andrew also contributed to setting up the multi-robot teleop in both simulation and hardware.
+## Alex
+Alex was another hard-working member. Alex spent a lot of time working alongside Andrew together they brought up the multi-map merge and multi-robot teleop. Alex also worked on the explore lite frontier exploration as well as did a lot of manual testing and driving of the rosbot systems.
+
+## Patrick
+Patrick was invaluable to setting up the Rosbots. We ran into a lot of issues when we started to move away from simulations and onto physical components. Patrick worked dilligently with Anas to get both of our Rosbots up and running, where he had to debug some hardware/ electrical issues with the Rosbots, one of which ended up being a pesky connection issue with our Lidar.
+
+## Devin
+Devin was solely responsible for bringing up the RRT package into system. This package allows for multiple agents to perform frontier exploration efficiently as they will tend towards taking different routes to explore. Devin also brought in the extra maps used in our simulations to further test our exploration algorithms.
 
 # References:
 

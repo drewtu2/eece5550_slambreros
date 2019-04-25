@@ -1,5 +1,4 @@
-Run the 
-
+# Setup
 Clone this repo to the source directory of your catkin workspace.
 
 ```

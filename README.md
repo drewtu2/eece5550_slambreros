@@ -81,8 +81,15 @@ To Save a completed merged map:
 - [Navigation Stack](http://wiki.ros.org/navigation)
 - [Navigation Tutorial Stack](http://wiki.ros.org/navigation/Tutorials/RobotSetup)
 - [2D cost maps](http://wiki.ros.org/costmap_2d)
+
+## tf
 - [tf](http://wiki.ros.org/tf)
 - [tf multiplerobots](https://answers.ros.org/question/246338/how-to-connect-tf-for-multiple-robots-in-slam/)
+- [tf2 depreicates prefix](http://wiki.ros.org/tf2/Migration)
+- essentially, the `tf_prefix` is not really supported since most packages failed
+to implement it correctly to begin with. As a result, if you're relying on `tf_prefix`
+to correctly namespace your `tf frames`, you will have a bad time. Trust us. 
+Been there. Done that. 
 
 ## Beyond the Nav Stack
 - [SLAM gampping](http://wiki.ros.org/gmapping?distro=hydro)

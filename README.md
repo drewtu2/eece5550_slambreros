@@ -1,5 +1,9 @@
 # Teleoperated Multi-ROSbot SLAM #
 
+![ROSBot2](figures/profile.JPG)
+![Guts](figures/profile.JPG)
+![Guts](figures/play_pen.JPG)
+
 ## Overview ##
 This package contains launch files and nodes needed to let multiple Husarion 
 ROSbots collaboratively map an unknown environment from unknown starting 
@@ -9,9 +13,9 @@ merged together on the `/merged_map` channel.
 ## Dependencies ##
 In order to use all these packages, you also need to install the following ROS 
 packages on each ROSBot:
-* `multirobot_map_merge`
-* `rosbot_description`
-* `husarion_ros`
+- `multirobot_map_merge`
+- `rosbot_description`
+- `husarion_ros`
 
 
 ## Setup ##
@@ -74,6 +78,7 @@ To Save a completed merged map:
     source devel/setup.sh
     rosrun map_server map_saver map:=/merged_map -f <output_filename>
 ```
+
 # With Great Power Comes Great Responsibility:
 ## Andrew
 Andrew was the de facto leader of the group. He had the most experience with ROS and was able to guide every other member when they ran into any issues. Andrew was responsible for integrating the multi-map merge package into our system in both simulation and hardware. Andrew also contributed to setting up the multi-robot teleop in both simulation and hardware.
@@ -87,7 +92,6 @@ Patrick was invaluable to setting up the Rosbots. We ran into a lot of issues wh
 Devin was solely responsible for bringing up the RRT package into system. This package allows for multiple agents to perform frontier exploration efficiently as they will tend towards taking different routes to explore. Devin also brought in the extra maps used in our simulations to further test our exploration algorithms.
 
 # References:
-
 ## Husarion specfic: 
 - [Husarion Multiple Machines](https://husarion.com/tutorials/ros-tutorials/5-running-ros-on-multiple-machines/)
 - [Husarion SLAM](https://husarion.com/tutorials/ros-tutorials/6-slam-navigation/)

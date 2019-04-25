@@ -5,4 +5,5 @@ export ROS_MASTER_URI=$MASTER_JAGUAR            # Jaguar as MASTER (got that DNS
 export ROS_IPV6=off                             # use IPV4
 
 # needs to be set...
-export ROS_IP=$(hostname -i)                    # IP address of current machine
+export ROS_IP=10.101.84.77                     	# IP address of jaguar machine
+

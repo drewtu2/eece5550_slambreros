@@ -141,3 +141,8 @@ and reseat the connection.
 and Rviz were laggy in our simulations.
 
 ![Play Pen](figures/play_pen.JPG)
+
+# EXTRA NOTE! # 
+Though it isn't in Master yet and hasn't been tested on hardware, we have a 
+Rapidly Exploring Random Tree frontier exploration feature in a development 
+branch called `rrt`. Check it out, and read the README on that branch!

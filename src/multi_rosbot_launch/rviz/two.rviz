@@ -331,7 +331,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /merged_map
+      Topic: /map_merge/merged_map
       Unreliable: false
       Use Timestamp: false
       Value: true

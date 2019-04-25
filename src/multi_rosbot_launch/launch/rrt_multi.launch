@@ -74,7 +74,7 @@
             <param name="oscillation_distance" value="0.5" />
             <param name="planner_patience" value="1" />
             <param name="controller_patience" value="1" /> 
-            <remap from="cmd_vel" to="mobile_base/commands/velocity"/>
+        <!--    <remap from="cmd_vel" to="mobile_base/commands/velocity"/> -->
             <param name="recovery_behavior_enabled" value="false" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
@@ -164,7 +164,7 @@
             <param name="oscillation_distance" value="0.5" />
             <param name="planner_patience" value="1" />
             <param name="controller_patience" value="1" /> 
-            <remap from="cmd_vel" to="mobile_base/commands/velocity"/>
+        <!--    <remap from="cmd_vel" to="mobile_base/commands/velocity"/> -->
             <param name="recovery_behavior_enabled" value="false" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
@@ -198,7 +198,7 @@
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     
 
-    <include file="$(find multi_rosbot_launch)/launch/merge_maps.launch"> </include>
+    <include file="$(find multi_rosbot_launch)/launch/rrtmap_merge.launch"> </include>
 
     <!-- Setup RRT -->
     <include file="$(find multi_rosbot_launch)/launch/two_robots.launch">

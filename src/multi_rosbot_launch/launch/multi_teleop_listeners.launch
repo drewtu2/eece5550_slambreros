@@ -20,6 +20,7 @@
             <arg name="robot_name" value="rosbot1"/>
             <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
         </include>
+
     </group>
 
 
@@ -32,15 +33,16 @@
 
         <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
             <arg name="robot_name" value="rosbot2"/>
-            <arg name="init_pose" value="-x -2.0 -y -2.0 -z 0"/>
+            <arg name="init_pose" value="-x -2 -y -2 -z 0"/>
         </include>
+
     </group>
     
 	<!-- Stuff we need either way-->
     <node name="rviz_overview" pkg="rviz" type="rviz" 
         args="-d $(find multi_rosbot_launch)/rviz/rviz_god_mode.rviz" 
         required="true" 
-        output="screen"/>
+        output="log"/>
     
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     

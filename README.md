@@ -1,8 +1,6 @@
 # Teleoperated Multi-ROSbot SLAM #
 
 ![ROSBot2](figures/profile.JPG)
-![Guts](figures/profile.JPG)
-![Guts](figures/play_pen.JPG)
 
 ## Overview ##
 This package contains launch files and nodes needed to let multiple Husarion 
@@ -124,12 +122,22 @@ Been there. Done that.
 
 
 # Known Issues #
-    - The multibot_map_merge fails when we try to give it initial poses. We're working on a solution, 
-    but for now, please stick to the unknown-initial-position method
-    - Even when it works, the map merging can be finnicky. It works more reliably in simulation than in
-    real life, unfortunately. We've been working on debugging and tuning it to get more reliable map merging.
-    - We had some network connectivity issues where the connection would fail while a ROSbot was in the middle of
-    executing a motion command. When this happens, there may be no way to stop the robot besides doing it manually.
-    - In the Teleoperated Multi-ROSbot SLAM system, the two robots do not know to remove each other from their occupancy maps. This could theoretically be a possible feature in future revisions.
-    - Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up and reseat the connection.
-    - Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo and Rviz were laggy in our simulations.
+![Guts](figures/guts.JPG)
+- The multibot_map_merge fails when we try to give it initial poses. We're 
+working on a solution, but for now, please stick to the unknown-initial-position 
+method
+- Even when it works, the map merging can be finnicky. It works more reliably 
+in simulation than in real life, unfortunately. We've been working on debugging 
+and tuning it to get more reliable map merging.
+- We had some network connectivity issues where the connection would fail while 
+a ROSbot was in the middle of executing a motion command. When this happens, 
+there may be no way to stop the robot besides doing it manually.
+- In the Teleoperated Multi-ROSbot SLAM system, the two robots do not know to 
+remove each other from their occupancy maps. This could theoretically be a 
+possible feature in future revisions.
+- Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up 
+and reseat the connection.
+- Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo 
+and Rviz were laggy in our simulations.
+
+![Play Pen](figures/play_pen.JPG)

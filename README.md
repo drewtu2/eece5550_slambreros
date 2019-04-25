@@ -8,6 +8,8 @@ ROSbots collaboratively map an unknown environment from unknown starting
 positions. Each robot generates its own map using lidar scans, and they are 
 merged together on the `/merged_map` channel.
 
+[presentation](https://docs.google.com/presentation/d/12-RzKVAm1RAIG1HbBAe8ySpMoVsIx-HdZdRIbX4Siek/edit)
+
 ## Dependencies ##
 In order to use all these packages, you also need to install the following ROS 
 packages on each ROSBot:
@@ -79,15 +81,56 @@ To Save a completed merged map:
 
 # With Great Power Comes Great Responsibility:
 ## Andrew
-Andrew was the de facto leader of the group. He had the most experience with ROS and was able to guide every other member when they ran into any issues. Andrew was responsible for integrating the multi-map merge package into our system in both simulation and hardware. Andrew also contributed to setting up the multi-robot teleop in both simulation and hardware.
+Andrew was the de facto leader of the group. He had the most experience with 
+ROS and was able to guide every other member when they ran into any issues. 
+Andrew was responsible for integrating the multi-map merge package into our 
+system in both simulation and hardware. Andrew also contributed to setting up 
+the multi-robot teleop in both simulation and hardware.
+
 ## Alex
-Alex was another hard-working member. Alex spent a lot of time working alongside Andrew together they brought up the multi-map merge and multi-robot teleop. Alex also worked on the explore lite frontier exploration as well as did a lot of manual testing and driving of the rosbot systems.
+Alex was another hard-working member. Alex spent a lot of time working 
+alongside Andrew together they brought up the multi-map merge and multi-robot 
+teleop. Alex also worked on the explore lite frontier exploration as well as 
+did a lot of manual testing and driving of the rosbot systems.
 
 ## Patrick
-Patrick was invaluable to setting up the Rosbots. We ran into a lot of issues when we started to move away from simulations and onto physical components. Patrick worked dilligently with Anas to get both of our Rosbots up and running, where he had to debug some hardware/ electrical issues with the Rosbots, one of which ended up being a pesky connection issue with our Lidar.
+Patrick was invaluable to setting up the Rosbots. We ran into a lot of issues 
+when we started to move away from simulations and onto physical components. 
+Patrick worked dilligently with Anas to get both of our Rosbots up and running, 
+where he had to debug some hardware/ electrical issues with the Rosbots, one of 
+which ended up being a pesky connection issue with our Lidar.
 
 ## Devin
-Devin was solely responsible for bringing up the RRT package into system. This package allows for multiple agents to perform frontier exploration efficiently as they will tend towards taking different routes to explore. Devin also brought in the extra maps used in our simulations to further test our exploration algorithms.
+Devin was solely responsible for bringing up the RRT package into system. This 
+package allows for multiple agents to perform frontier exploration efficiently 
+as they will tend towards taking different routes to explore. Devin also brought 
+in the extra maps used in our simulations to further test our exploration algorithms.
+
+# Known Issues #
+![Guts](figures/guts.JPG)
+- The multibot_map_merge fails when we try to give it initial poses. We're 
+working on a solution, but for now, please stick to the unknown-initial-position 
+method
+- Even when it works, the map merging can be finnicky. It works more reliably 
+in simulation than in real life, unfortunately. We've been working on debugging 
+and tuning it to get more reliable map merging.
+- We had some network connectivity issues where the connection would fail while 
+a ROSbot was in the middle of executing a motion command. When this happens, 
+there may be no way to stop the robot besides doing it manually.
+- In the Teleoperated Multi-ROSbot SLAM system, the two robots do not know to 
+remove each other from their occupancy maps. This could theoretically be a 
+possible feature in future revisions.
+- Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up 
+and reseat the connection.
+- Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo 
+and Rviz were laggy in our simulations.
+
+![Play Pen](figures/play_pen.JPG)
+
+# EXTRA NOTE! # 
+Though it isn't in Master yet and hasn't been tested on hardware, we have a 
+Rapidly Exploring Random Tree frontier exploration feature in a development 
+branch called `rrt`. Check it out, and read the README on that branch!
 
 # References:
 ## Husarion specfic: 
@@ -121,28 +164,3 @@ Been there. Done that.
 - [Multi Robot SLAM](https://answers.ros.org/question/41433/multiple-robots-simulation-and-navigation/)
 
 
-# Known Issues #
-![Guts](figures/guts.JPG)
-- The multibot_map_merge fails when we try to give it initial poses. We're 
-working on a solution, but for now, please stick to the unknown-initial-position 
-method
-- Even when it works, the map merging can be finnicky. It works more reliably 
-in simulation than in real life, unfortunately. We've been working on debugging 
-and tuning it to get more reliable map merging.
-- We had some network connectivity issues where the connection would fail while 
-a ROSbot was in the middle of executing a motion command. When this happens, 
-there may be no way to stop the robot besides doing it manually.
-- In the Teleoperated Multi-ROSbot SLAM system, the two robots do not know to 
-remove each other from their occupancy maps. This could theoretically be a 
-possible feature in future revisions.
-- Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up 
-and reseat the connection.
-- Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo 
-and Rviz were laggy in our simulations.
-
-![Play Pen](figures/play_pen.JPG)
-
-# EXTRA NOTE! # 
-Though it isn't in Master yet and hasn't been tested on hardware, we have a 
-Rapidly Exploring Random Tree frontier exploration feature in a development 
-branch called `rrt`. Check it out, and read the README on that branch!

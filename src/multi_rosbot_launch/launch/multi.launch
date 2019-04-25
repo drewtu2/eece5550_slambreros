@@ -8,7 +8,8 @@
 
 
 	<!-- Setup World Gazebo -->
-    <include file="$(find multi_rosbot_launch)/launch/challenge_maze.launch"/>
+   <!-- <include file="$(find multi_rosbot_launch)/launch/challenge_maze.launch"/> -->
+    <include file="$(find rosbot_gazebo)/launch/maze_world.launch"/>
     
     <!-- Load the robot description parameters--> 
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>
@@ -52,14 +53,14 @@
 
     <group ns="rosbot2">
         <param name="tf_prefix" value="rosbot2"></param>
-        <param name="map_merge/init_pose_x" value="-2"></param>
-        <param name="map_merge/init_pose_y" value="-2"></param>
+        <param name="map_merge/init_pose_x" value="-1"></param>
+        <param name="map_merge/init_pose_y" value="0"></param>
         <param name="map_merge/init_pose_z" value="0"></param>
         <param name="map_merge/init_pose_yaw" value="0"></param>
 
         <include file="$(find multi_rosbot_launch)/launch/one_bot.launch">
             <arg name="robot_name" value="rosbot2"/>
-            <arg name="init_pose" value="-x -2 -y -2 -z 0"/>
+            <arg name="init_pose" value="-x -1 -y 0 -z 0"/>
         </include>`
 
         <node name="movebase2" pkg="move_base" type="move_base" required="true" output="screen" >
@@ -94,7 +95,11 @@
     
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     
+
     <include file="$(find multi_rosbot_launch)/launch/merge_maps.launch"> </include>
-    <node pkg="tf" type="static_transform_publisher" name="maplink" args="-100 -100 0 0 0 0 map world 100"/>
+
+   <node pkg="tf" type="static_transform_publisher" name="maplink" args="-100 -100 0 0 0 0 map world 100"/>
+
+
 </launch>
 

@@ -12,6 +12,11 @@
         <param name="tf_prefix" value="rosbot1" />
     </node>
 
+    <param name="map_merge/init_pose_x" value="0"></param>
+    <param name="map_merge/init_pose_y" value="0"></param>
+    <param name="map_merge/init_pose_z" value="0"></param>
+    <param name="map_merge/init_pose_yaw" value="0"></param>
+
     <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
 	<param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
   	<param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->

@@ -8,7 +8,6 @@ Change to your catkin workspace src directory and run
 ```
 git clone https://github.com/hasauino/rrt_exploration
 ```
-to get the `rrt_exploration` package.
 
 In your catkin worksapce run:
 

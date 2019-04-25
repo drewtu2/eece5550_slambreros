@@ -32,7 +32,7 @@ order for the networking to function well.
 4. For every machine involved, the environment variable `ROS_IP` must be set 
 to the ip address of that particular computer.
 
-## Launching the system
+## Launching the Teleoperated Map Merge system
 In order to start mapping, you will need to SSH into the both ROSbots in order 
 to launch the required nodes. The username and password for both ROSbots is 'husarion'.
 
@@ -79,7 +79,7 @@ To Save a completed merged map:
     rosrun map_server map_saver map:=/merged_map -f <output_filename>
 ```
 
-# With Great Power Comes Great Responsibility:
+# With Great Power Comes Great **Responsibility**:
 ## Andrew
 Andrew was the de facto leader of the group. He had the most experience with 
 ROS and was able to guide every other member when they ran into any issues. 
@@ -106,14 +106,17 @@ package allows for multiple agents to perform frontier exploration efficiently
 as they will tend towards taking different routes to explore. Devin also brought 
 in the extra maps used in our simulations to further test our exploration algorithms.
 
-# Known Issues #
+# Dirty Laundry/Known Issues #
 ![Guts](figures/guts.JPG)
-- The multibot_map_merge fails when we try to give it initial poses. We're 
+- The `multibot_map_merge` fails when we try to give it initial poses. We're 
 working on a solution, but for now, please stick to the unknown-initial-position 
-method
+method. 
 - Even when it works, the map merging can be finnicky. It works more reliably 
 in simulation than in real life, unfortunately. We've been working on debugging 
 and tuning it to get more reliable map merging.
+- We've found that in many cases, map merge in unknown initial conditions requires
+a significant amount of overlap before a match is made. Reducing the `estimation_confidence`
+parameter could help with faster matching. 
 - We had some network connectivity issues where the connection would fail while 
 a ROSbot was in the middle of executing a motion command. When this happens, 
 there may be no way to stop the robot besides doing it manually.
@@ -123,7 +126,31 @@ possible feature in future revisions.
 - Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up 
 and reseat the connection.
 - Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo 
-and Rviz were laggy in our simulations.
+and Rviz were laggy in our simulations. This would be a good place to explore
+the use of AWS RoboMaker to launch simulations in a remote high power environment.
+
+**Simulations work better than real world** (at least for SLAM). In simulation,
+the map merge works well with known initial poses. From there we used the explore-lite
+package to perform multi-robot frontier exploration. We quickly realized that because
+the two exploration nodes were created and operated independently on the same map,
+the nodes solved for the same solution. As a result, both robots routed to the same
+location. We addressed this by using the `rrt_exploration` package instead. 
+This package was designed to handle **multi-robo** frontier exploration, ensuring
+each robot moved to search a unique frontier (as opposed to having the robots
+converge on a single solution). 
+
+There are some dependency issues that exist between the rrt branch and the rest
+of the branches. The rrt branch is uses an older version of `multi_map_merge`
+package whereas the rest of the branches use the most recent version. Furthermore
+both implementations of frontier exploration (rrt and explore-lite) require a 
+working `map_merge` to effectively target frontiers. Since this is a node we're
+having trouble getting working on the real world system, it would be difficult to 
+get the exploration nodes working on the physical system. Therefore, solving the
+multi-robot mapping should be the first problem thats tackled. 
+
+Another feature that would be extremely useful is a single launch file that can
+launch nodes remotely on another computer. This would greatly speed up the iteration
+process, allowing a single command to bring up the entire system. 
 
 ![Play Pen](figures/play_pen.JPG)
 

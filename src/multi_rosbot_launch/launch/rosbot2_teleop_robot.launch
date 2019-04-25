@@ -47,7 +47,7 @@
     </node>
     
     <!-- Some static transforms-->
-    <node pkg="tf" type="static_transform_publisher" name="maplink" args="0 0 0 0 0 0 world rosbot2/map 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="maplink" args="0 1 0 0 0 0 world rosbot2/map 100"/>
     <node pkg="tf" type="static_transform_publisher" name="ROSbot2laser1" args="0 0 0 3.14 0 0 /rosbot2/base_link /rosbot2/laser 10" />
     
 </group>

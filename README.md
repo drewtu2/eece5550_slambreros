@@ -1,26 +1,36 @@
 # Teleoperated Multi-ROSbot SLAM #
 
 ## Overview ##
-This package contains launch files and nodes needed to let multiple Husarion ROSbots collaboratively map an unknown environment from unknown starting positions. Each robot generates its own map using lidar scans, and they are merged together on the `/merged_map` channel.
+This package contains launch files and nodes needed to let multiple Husarion 
+ROSbots collaboratively map an unknown environment from unknown starting 
+positions. Each robot generates its own map using lidar scans, and they are 
+merged together on the `/merged_map` channel.
 
 ## Dependencies ##
-In order to use all these packages, you also need to install the following ROS packages on each ROSBot:
-    * multirobot_map_merge
-    * rosbot_description
-    * husarion_ros
+In order to use all these packages, you also need to install the following ROS 
+packages on each ROSBot:
+* `multirobot_map_merge`
+* `rosbot_description`
+* `husarion_ros`
 
 
 ## Setup ##
-In order to run this system, a single ROSbot (Jaguar) will be the ROS Master, and a second ROSBot (Samba) will
-join the ROS subnet. Additionally, one or more operator laptops must be on the same network in order to teleoperate the ROSbots. There are a number of environment variables that need to be set in order fot the networking to function well. 
+In order to run this system, a single ROSbot (Jaguar) will be the ROS Master, 
+and a second ROSBot (Samba) will join the ROS subnet. Additionally, one or more 
+operator laptops must be on the same network in order to teleoperate the 
+ROSbots. There are a number of environment variables that need to be set in 
+order for the networking to function well. 
 1. We found that in our VirtualBox Ubuntu machines, we needed to set our Network Adapter to Bridged mode.
-2. You must know the IP address of every machine involved. Jaguar is 10.101.84.77 and Samba is 10.101.84.78.
-3. For every machine involved, the environment variable ROS_MASTER_URI must be set to 
-    'http://10.101.84.77:11311`, and ROS_IPV6 must be set to 'OFF'.
-4. For every machine involved, the environment variable ROS_IP must be set to the ip address of that particular computer.
+2. You must know the IP address of every machine involved. Jaguar is 
+`10.101.84.77` and Samba is `10.101.84.78`.
+3. For every machine involved, the environment variable `ROS_MASTER_URI` must be set to 
+    `http://10.101.84.77:11311`, and `ROS_IPV6` must be set to `OFF`.
+4. For every machine involved, the environment variable `ROS_IP` must be set 
+to the ip address of that particular computer.
 
 ## Launching the system
-In order to start mapping, you will need to SSH into the both ROSbots in order to launch the required nodes. The username and password for both ROSbots is 'husarion'.
+In order to start mapping, you will need to SSH into the both ROSbots in order 
+to launch the required nodes. The username and password for both ROSbots is 'husarion'.
 
 On Jaguar, run the following commands:
 ```
@@ -64,8 +74,6 @@ To Save a completed merged map:
     source devel/setup.sh
     rosrun map_server map_saver map:=/merged_map -f <output_filename>
 ```
-
-
 
 # References:
 

@@ -129,3 +129,6 @@ Been there. Done that.
     - In the Teleoperated Multi-ROSbot SLAM system, the two robots do not know to remove each other from their occupancy maps. This could theoretically be a possible feature in future revisions.
     - Jaguar's Lidar seems to have a finnicky USB connection. We had to open it up and reseat the connection.
     - Even with 4+ cores and 8+ GB of RAM in a VirtualBox VM, we found that Gazebo and Rviz were laggy in our simulations.
+
+# EXTRA NOTE! # 
+Though it isn't in Master yet and hasn't been tested on hardware, we have a Rapidly Exploring Random Tree frontier exploration feature in a development branch called `rrt`. Check it out, and read the README on that branch!

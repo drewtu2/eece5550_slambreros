@@ -8,12 +8,12 @@
 
 
 	<!-- Setup World Gazebo -->
-   <!-- <include file="$(find multi_rosbot_launch)/launch/challenge_maze.launch"/> -->
-    <include file="$(find rosbot_gazebo)/launch/maze_world.launch"/>
-    
-    <!-- Load the robot description parameters--> 
+     <include file="$(find multi_rosbot_launch)/launch/challenge_maze.launch"/> 
+   <!-- <include file="$(find rosbot_gazebo)/launch/maze_world.launch"/> -->
+
+   <!-- Load the obot description parameters--> 
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbot_description)/urdf/rosbot.xacro'"/>
-    
+
       <node pkg="gmapping" type="slam_gmapping" name="rosbot1_gmapping" output="screen">
       <remap from="/scan" to="/rosbot1/scan"/>
       <remap from="/map" to="/rosbot1/map"/>
@@ -55,8 +55,8 @@
     </node>
 
     <group ns="rosbot1">
-        <param name="tf_prefix" value="rosbot1"></param>
         <param name="map_merge/init_pose_x" value="0"></param>
+        <param name="tf_prefix" value="rosbot1"></param>
         <param name="map_merge/init_pose_y" value="0"></param>
         <param name="map_merge/init_pose_z" value="0"></param>
         <param name="map_merge/init_pose_yaw" value="0"></param>
@@ -66,32 +66,28 @@
             <arg name="init_pose" value="-x 0 -y -0 -z 0"/>
         </include>`
 
-        <node name="movebase" pkg="move_base" type="move_base" required="true" output="screen" >
-            <param name="controller_frequency" value="10.0"/>
+        <node name="move_base_node" pkg="move_base" type="move_base" required="true" output="screen" >
+            <param name="footprint_padding" value="0.01" />
+            <param name="controller_frequency" value="5.0" />
+            <param name="controller_patience" value="3.0" />
+            <param name="oscillation_timeout" value="30.0" />
+            <param name="oscillation_distance" value="0.5" />
+            <param name="planner_patience" value="1" />
+            <param name="controller_patience" value="1" /> 
+        <!--    <remap from="cmd_vel" to="mobile_base/commands/velocity"/> -->
+            <param name="recovery_behavior_enabled" value="false" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
-            <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
-            <param name="publish_cost_grid_pc" value="true" />
-        </node>
-
-        <node name="Explore1" pkg="explore_lite" type="explore" required="true" output="screen" >
-            <param name="robot_base_frame" value="base_link" />
-            <param name="costmap_topic" value="/merged_map" />
-            <param name="costmap_updates_topic" value="/merged_map_updates" />
-            <param name="track_unknown_space" value="true" />
-            <param name="min_frontier_size" value="0.1"/>
-        </node>
-
-        <node name="relay_goal" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
-            <param name="intopic" value="/move_base_simple/goal" />
-            <param name="outtopic" value="move_base_simple/goal"/>
+	    <rosparam file="$(find multi_rosbot_launch)/config/base_local_planner_params.yaml" command="load"/>
+        <param name="publish_cost_grid_pc" value="true" />
         </node>
     </group>
 
 
-      <node pkg="gmapping" type="slam_gmapping" name="rosbot2_gmapping" output="screen">
+    <node pkg="gmapping" type="slam_gmapping" name="rosbot2_gmapping" output="screen">
+    
       <remap from="/scan" to="/rosbot2/scan"/>
       <remap from="/map" to="/rosbot2/map"/>
       <remap from="/map_metadata" to="/rosbot2/map_metadata"/>
@@ -130,6 +126,7 @@
       <param name="lasamplestep" value="0.005"/>
       <param name="minimumScore" value="0.005"/>
     </node>
+ 
     <group ns="rosbot2">
         <param name="tf_prefix" value="rosbot2"></param>
         <param name="map_merge/init_pose_x" value="-1"></param>
@@ -142,41 +139,43 @@
             <arg name="init_pose" value="-x -1 -y 0 -z 0"/>
         </include>`
 
-        <node name="movebase2" pkg="move_base" type="move_base" required="true" output="screen" >
+       <node name="move_base_node" pkg="move_base" type="move_base" required="true" output="screen" >
             <param name="controller_frequency" value="10.0"/>
+            <param name="footprint_padding" value="0.01" />
+            <param name="controller_frequency" value="5.0" />
+            <param name="controller_patience" value="3.0" />
+            <param name="oscillation_timeout" value="30.0" />
+            <param name="oscillation_distance" value="0.5" />
+            <param name="planner_patience" value="1" />
+            <param name="controller_patience" value="1" /> 
+            <param name="recovery_behavior_enabled" value="false" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
-            <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load" />
-            <param name="publish_cost_grid_pc" value="true" />
+	   <rosparam file="$(find multi_rosbot_launch)/config/base_local_planner_params.yaml" command="load"/>
+          <param name="publish_cost_grid_pc" value="true" />
         </node>
 
-        <node name="Explore2" pkg="explore_lite" type="explore" required="true" output="screen" >
-            <param name="robot_base_frame" value="base_link" />
-            <param name="costmap_topic" value="/merged_map" />
-            <param name="costmap_updates_topic" value="/merged_map_updates" />
-            <param name="track_unknown_space" value="true" />
-            <param name="min_frontier_size" value="0.1" />
-        </node>
-
-        <node name="relay_goal2" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
-            <param name="intopic" value="/move_base_simple/goal" />
-            <param name="outtopic" value="move_base_simple/goal"/>
-        </node>
     </group>
     
 	<!-- Stuff we need either way-->
     <node name="rviz_overview" pkg="rviz" type="rviz" 
-        args="-d $(find multi_rosbot_launch)/rviz/rviz_god_mode.rviz" 
+        args="-d $(find multi_rosbot_launch)/rviz/two.rviz" 
         required="true" 
         output="log"/>
     
     <node name="graph" pkg="rqt_graph" type="rqt_graph"/>
     
 
-    <include file="$(find multi_rosbot_launch)/launch/merge_maps.launch"> </include>
+    <include file="$(find multi_rosbot_launch)/launch/rrtmap_merge.launch"> </include>
 
+    <!-- Setup RRT -->
+    <include file="$(find multi_rosbot_launch)/launch/two_robots.launch">
+        <arg name="bot1" value="rosbot1"/>
+        <arg name="bot2" value="rosbot2"/>
+    </include>
+ 
    <node pkg="tf" type="static_transform_publisher" name="maplink" args="-100 -100 0 0 0 0 map world 100"/>
 
 

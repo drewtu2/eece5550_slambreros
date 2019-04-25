@@ -10,3 +10,5 @@ local_costmap:
   origin_y: -0.75
   resolution: 0.1
   inflation_radius: 0.5
+  global_frame: /map
+  robot_base_frame: base_link

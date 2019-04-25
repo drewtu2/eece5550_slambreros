@@ -80,7 +80,7 @@
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
-	    <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load"/>
+	    <rosparam file="$(find multi_rosbot_launch)/config/base_local_planner_params.yaml" command="load"/>
         <param name="publish_cost_grid_pc" value="true" />
         </node>
 
@@ -94,11 +94,11 @@
         </node>
 -->
 
-        <node name="relay_goal" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
+<!--        <node name="relay_goal" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
             <param name="intopic" value="/move_base_simple/goal" />
             <param name="outtopic" value="move_base_simple/goal"/>
         </node>
-
+-->
     </group>
 
 
@@ -170,7 +170,7 @@
             <rosparam file="$(find multi_rosbot_launch)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
             <rosparam file="$(find multi_rosbot_launch)/config/local_costmap_params.yaml" command="load" />
             <rosparam file="$(find multi_rosbot_launch)/config/global_costmap_params.yaml" command="load" />
-	   <rosparam file="$(find multi_rosbot_launch)/config/trajectory_planner.yaml" command="load"/>
+	   <rosparam file="$(find multi_rosbot_launch)/config/base_local_planner_params.yaml" command="load"/>
           <param name="publish_cost_grid_pc" value="true" />
         </node>
 
@@ -183,10 +183,11 @@
             <param name="min_frontier_size" value="0.1" />
         </node>
 -->
-         <node name="relay_goal2" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
+ <!--        <node name="relay_goal2" pkg="topic_tools" type="relay" args="/move_base_simple/goal move_base_simple/goal">
             <param name="intopic" value="/move_base_simple/goal" />
             <param name="outtopic" value="move_base_simple/goal"/>
         </node>
+-->
     </group>
     
 	<!-- Stuff we need either way-->
